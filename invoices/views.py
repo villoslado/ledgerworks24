@@ -72,7 +72,9 @@ def download_xls(request):
     if data is None:
         return redirect("simple_upload")
     df = pd.DataFrame(data)
-    response = HttpResponse(content_type="application/vnd.ms-excel")
-    response["Content-Disposition"] = 'attachment; filename="invoices.xls"'
-    df.to_excel(response, index=False)
+    response = HttpResponse(
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+    response["Content-Disposition"] = 'attachment; filename="invoices.xlsx"'
+    df.to_excel(response, index=False, engine="openpyxl")
     return response
