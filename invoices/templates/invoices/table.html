@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Uploaded Data</h2>
+    <a href="{% url 'download_csv' %}">Download CSV</a>
+    <a href="{% url 'download_xls' %}">Download XLS</a>
+    <div>{{ data|safe }}</div>
+{% endblock content %}

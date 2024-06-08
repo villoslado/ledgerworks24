@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+    LedgerWorks24 - Login
+{% endblock title %}
+{% block content %}
+    <main class="form-page">
+        <div>
+            <h1>Login</h1>
+            <form method="post" class="form-container">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-field">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="form-errors">
+                                <ul>
+                                    {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {% if form.non_field_errors %}
+                    <div class="form-errors">
+                        <ul>
+                            {% for error in form.non_field_errors %}<li>{{ error }}</li>{% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="button-container">
+                    <button type="submit" class="button create form-button">Login</button>
+                    <a href="{% url 'signup' %}" class="button cancel form-button">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock content %}

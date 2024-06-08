@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="This is a base html for use across the website.">
+        <meta name="keywords" content="invoice, management">
+        <link rel="stylesheet" href="{% static 'css/invoices.css' %}">
+        <title>
+            {% block title %}
+                LedgerWorks24
+            {% endblock title %}
+        </title>
+    </head>
+    <body>
+        <header class="website-header">
+            <div class="logo">
+                <span class="logo-ledger">Ledger</span><span class="logo-works24">Works24</span>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+        <footer>
+            Your 24/7 Invoice Management Solution
+        </footer>
+    </body>
+</html>

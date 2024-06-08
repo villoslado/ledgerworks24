@@ -10,10 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+DATA_UPLOAD_MAX_NUMBER_FILES = 150  # Increase this number to your desired limit
+DATA_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100 MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100 MB
+
+
+FILE_UPLOAD_HANDLERS = [
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+]
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,6 +46,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "accounts.apps.AccountsConfig",
+    "invoices.apps.InvoicesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -54,7 +71,7 @@ ROOT_URLCONF = "invoicemanagement.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
