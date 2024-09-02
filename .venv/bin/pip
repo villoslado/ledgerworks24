@@ -1,4 +1,4 @@
-#!/Users/gvilloslado/Projects/ledgerworks24/.venv/bin/python
+#!/Users/gvilloslado/Projects/GitHub/ledgerworks24/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
