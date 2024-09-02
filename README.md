@@ -1,4 +1,4 @@
-# Invoice Management System 📊
+# ledgerworks24 📊
 
 This Django-based web application provides a system for managing invoices. Built using Django and various Python libraries, it offers an interface for users to upload, process, and analyze invoice data. The application can be run within a Docker container for easy deployment and consistency across environments.
 
