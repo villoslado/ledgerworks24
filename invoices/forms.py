@@ -6,10 +6,6 @@ class UploadFileForm(forms.Form):
     files = forms.FileField(widget=MultipleFileInput())
 
 
-# class SimpleUploadForm(forms.Form):
-#     file = forms.FileField()
-
-
 class SimpleUploadForm(forms.Form):
     # You can add other form fields here if needed
     pass
